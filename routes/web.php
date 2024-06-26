@@ -8,6 +8,7 @@ use App\Http\Controllers\CrearCitasSecretarioController;
 use App\Http\Controllers\Medico\MedicoController;
 use App\Http\Controllers\Paciente\PacienteController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegistroEnfermeroController;
 use App\Http\Controllers\RegistroMedicosADMINController;
 use App\Http\Controllers\RegistroPacientesADMINController;
 use App\Http\Controllers\RegistroPacientesMEDICOController;
@@ -73,6 +74,7 @@ Route::middleware(['auth', 'AdministradorMiddleware'])->group(function(){
     Route::post('/admin/registro-secretarios', [RegistroSecretarioADMINController::class, 'registro_secretarios'])->name('admin.registro-secretarios.store'); //* POST a registrar secretarios a BD
     Route::get('/admin/registro-servicios', [RegistroServiciosController::class, 'index'])->name('admin.registro-servicios'); //* Vista para registrar servicios
     Route::post('/admin/registro-servicios', [RegistroServiciosController::class, 'store'])->name('admin.registro-servicios.store'); //* POST a registrar servicios a BD
+    Route::get('/admin/registro-enfermeros', [RegistroEnfermeroController::class, 'index'])->name('admin.registro-enfermeros');
 });
 
 

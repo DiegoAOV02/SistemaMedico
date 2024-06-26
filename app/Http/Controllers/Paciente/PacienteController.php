@@ -34,7 +34,7 @@ class PacienteController extends Controller
         ]);
 
         $paciente = Paciente::findOrFail($id);
-        $paciente->update($request->only('nombre', 'apellido', 'fecha_nacimiento', 'telefono', 'email'));
+        $paciente->update($request->only('nombre', 'apellido', 'telefono', 'email'));
 
         return redirect()->route('admin.dashboard')->with('success', 'Paciente actualizado correctamente');
     }

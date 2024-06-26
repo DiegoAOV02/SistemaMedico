@@ -36,6 +36,10 @@
                             {{ __('Registro Servicios') }}
                         </x-nav-link>
 
+                        <x-nav-link href="{{ route('admin.registro-enfermeros') }}" :active="request()->routeIs('admin.registro-enfermeros')">
+                            {{ __('Registro Enfermeros')}}
+                        </x-nav-link>
+
                     @endif
 
                     {{-- medico links --}}
@@ -51,6 +55,10 @@
 
                         <x-nav-link href="/consultas" :active="request()->routeIs('medico.consultas')">
                             {{ __('Consultas') }}
+                        </x-nav-link>
+
+                        <x-nav-link href="/pacientes" :active="request()->routeIs('medico.pacientes')">
+                            {{ __('Pacientes') }}
                         </x-nav-link>
                     @endif
 
