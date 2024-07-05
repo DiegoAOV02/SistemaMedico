@@ -18,12 +18,12 @@
             @csrf
             <div class="mb-6 flex items-center bg-white bg-opacity-20 rounded-md shadow-sm">
                 <img src="imagenes/usuario.png" alt="correo Icon" class="w-8 h-8 ml-4"> <!-- Aumentar el tamaño del icono -->
-                <input id="email" type="email" name="email" class="flex-grow px-4 py-3 bg-transparent border-none rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black placeholder-gray-500 text-lg" required autofocus autocomplete="username"> <!-- Aumentar el padding y tamaño de fuente -->
+                <input id="email" type="email" name="email" class="flex-grow px-4 py-3 bg-transparent border-none rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black placeholder-gray-500 text-lg" required autofocus autocomplete="username" placeholder="Correo"> <!-- Aumentar el padding y tamaño de fuente -->
             </div>
 
             <div class="mb-6 flex items-center bg-white bg-opacity-20 rounded-md shadow-sm">
                 <img src="imagenes/contraseña.png" alt="Password Icon" class="w-8 h-8 ml-4"> <!-- Aumentar el tamaño del icono -->
-                <input id="password" type="password" name="password" class="flex-grow px-4 py-3 bg-transparent border-none rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black placeholder-gray-500 text-lg" required autocomplete="current-password"> <!-- Aumentar el padding y tamaño de fuente -->
+                <input id="password" type="password" name="password" class="flex-grow px-4 py-3 bg-transparent border-none rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black placeholder-gray-500 text-lg" required autocomplete="current-password" placeholder="Contraseña"> <!-- Aumentar el padding y tamaño de fuente -->
 
             </div>
 
@@ -36,7 +36,7 @@
             @enderror
 
             <div class="flex-grow flex items-center justify-center mt-8">
-                <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent text-lg font-medium rounded-md text-black bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Iniciar sesión</button> <!-- Aumentar el tamaño del botón -->
+                <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent text-lg font-medium rounded-md text-white bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Iniciar sesión</button> <!-- Aumentar el tamaño del botón -->
             </div>
         </form>
     </div>

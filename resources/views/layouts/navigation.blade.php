@@ -147,7 +147,7 @@
 
 <style>
     .custom-navbar {
-        background-color: #7FB9E2;
+        background-color: #EEF7FF;
         border-bottom: 1px solid #7FB9E2;
     }
 
