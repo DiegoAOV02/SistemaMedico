@@ -114,7 +114,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden ">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-black">
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="dark:text-black">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
@@ -147,7 +147,7 @@
 
 <style>
     .custom-navbar {
-        background-color: #EEF7FF;
+        background-color: #CAF4FF;
         border-bottom: 1px solid #7FB9E2;
     }
 
@@ -161,7 +161,7 @@
 
     @media (prefers-color-scheme: dark) {
         .custom-navbar {
-            background-color: #3FBBB4;
+            background-color: #395B64;
             border-bottom: 1px solid #3FBBB4;
         }
     }
