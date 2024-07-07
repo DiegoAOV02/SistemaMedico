@@ -7,23 +7,29 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Return the migrations.
+     * 
+     * @return void
      */
     public function up(): void
     {
-        Schema::create('citas', function (Blueprint $table) {
-            $table->id();
-            $table->string('pacientes');
-            $table->time('hora');
-            $table->date('fecha');
-            $table->string('servicio');
-            $table->string('Descripcion');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('citas')){
+            Schema::create('citas', function (Blueprint $table) {
+                $table->id();
+                $table->string('pacientes');
+                $table->time('hora');
+                $table->date('fecha');
+                $table->string('servicio');
+                $table->string('Descripcion');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
      * Reverse the migrations.
+     * 
+     * @return void
      */
     public function down(): void
     {

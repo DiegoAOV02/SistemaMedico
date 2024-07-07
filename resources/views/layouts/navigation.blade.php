@@ -21,23 +21,27 @@
                     <!-- admin links -->
                     @if (Auth::user()->role === 'Administrador')
                         <x-nav-link href="{{ route('admin.registro-pacientes') }}" :active="request()->routeIs('admin.registro-pacientes')" class="text-black">
-                            {{ __('Registro Pacientes') }}
+                            {{ __('Pacientes') }}
                         </x-nav-link>
 
                         <x-nav-link href="{{ route('admin.registro-medicos') }}" :active="request()->routeIs('admin.registro-medicos')" class="text-black">
-                            {{ __('Registro Médicos') }}
+                            {{ __('Médicos') }}
                         </x-nav-link>
 
                         <x-nav-link href="{{ route('admin.registro-secretarios') }}" :active="request()->routeIs('admin.registro-secretarios')" class="text-black">
-                            {{ __('Registro Secretarios') }}
+                            {{ __('Secretarios') }}
                         </x-nav-link>
 
                         <x-nav-link href="{{ route('admin.registro-servicios') }}" :active="request()->routeIs('admin.registro-servicios')" class="text-black">
-                            {{ __('Registro Servicios') }}
+                            {{ __('Servicios') }}
                         </x-nav-link>
 
                         <x-nav-link href="{{ route('admin.registro-productos') }}" :active="request()->routeIs('admin.registro-productos')" class="text-black">
-                            {{ __('Registro Productos') }}
+                            {{ __('Productos') }}
+                        </x-nav-link>
+
+                        <x-nav-link href="{{ route('admin.registro-enfermeros') }}" :active="request()->routeIs('admin.registro-enfermeros')" class="text-black">
+                            {{ __('Enfermeros') }}
                         </x-nav-link>
                     @endif
 
