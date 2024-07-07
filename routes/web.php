@@ -13,6 +13,7 @@ use App\Http\Controllers\RegistroMedicosADMINController;
 use App\Http\Controllers\RegistroPacientesADMINController;
 use App\Http\Controllers\RegistroPacientesMEDICOController;
 use App\Http\Controllers\RegistroPacientesSECRETARIOController;
+use App\Http\Controllers\RegistroProductoADMINController;
 use App\Http\Controllers\RegistroSecretarioADMINController;
 use App\Http\Controllers\RegistroServiciosController;
 use App\Http\Controllers\Secretario\SecretarioController;
@@ -75,6 +76,7 @@ Route::middleware(['auth', 'AdministradorMiddleware'])->group(function(){
     Route::get('/admin/registro-servicios', [RegistroServiciosController::class, 'index'])->name('admin.registro-servicios'); //* Vista para registrar servicios
     Route::post('/admin/registro-servicios', [RegistroServiciosController::class, 'store'])->name('admin.registro-servicios.store'); //* POST a registrar servicios a BD
     Route::get('/admin/registro-enfermeros', [RegistroEnfermeroController::class, 'index'])->name('admin.registro-enfermeros');
+    Route::get('/admin/registro-productos', [RegistroProductoADMINController::class, 'index'])->name('admin.registro-productos'); //* Vista para registrar productos
 });
 
 

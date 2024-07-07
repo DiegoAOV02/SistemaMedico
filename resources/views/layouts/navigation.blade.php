@@ -35,6 +35,10 @@
                         <x-nav-link href="{{ route('admin.registro-servicios') }}" :active="request()->routeIs('admin.registro-servicios')" class="text-black">
                             {{ __('Registro Servicios') }}
                         </x-nav-link>
+
+                        <x-nav-link href="{{ route('admin.registro-productos') }}" :active="request()->routeIs('admin.registro-productos')" class="text-black">
+                            {{ __('Registro Productos') }}
+                        </x-nav-link>
                     @endif
 
                     <!-- medico links -->
