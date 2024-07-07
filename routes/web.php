@@ -67,6 +67,12 @@ Route::middleware(['auth', 'AdministradorMiddleware'])->group(function(){
     Route::get('/admin/pacientes/{paciente}/edit', [PacienteController::class, 'edit'])->name('pacientes.edit'); //* Vista para editar pacientes
     Route::patch('/admin/pacientes/{paciente}', [PacienteController::class, 'update'])->name('pacientes.update'); //* PATCH a actualizar pacientes
     Route::delete('/admin/pacientes/{paciente}', [PacienteController::class, 'destroy'])->name('pacientes.destroy'); //* DELETE a eliminar pacientes
+    /**
+     * Rutas para modificar la información de los enfermeros
+     */
+    Route::get('/admin/enfermeros/{enfermero}/edit', [EnfermeroController::class, 'edit'])->name('enfermeros.edit'); //* Vista para editar enfermeros
+    Route::patch('/admin/enfermeros/{enfermero}', [EnfermeroController::class, 'update'])->name('enfermeros.update'); //* PATCH a actualizar enfermeros
+    Route::delete('/admin/enfermeros/{enfermero}', [EnfermeroController::class, 'destroy'])->name('enfermeros.destroy'); //* DELETE a eliminar enfermeros
 
     Route::get('/admin/registro-pacientes', [RegistroPacientesADMINController::class, 'index'])->name('admin.registro-pacientes'); //* Vista para registrar pacientes
     Route::post('/admin/registro-pacientes', [RegistroPacientesADMINController::class, 'registro_paciente'])->name('admin.registro-pacientes.store'); //* POST a registrar pacientes a BD
