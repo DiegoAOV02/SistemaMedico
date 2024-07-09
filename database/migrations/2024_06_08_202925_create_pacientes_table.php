@@ -8,22 +8,28 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     * 
+     * @return void
      */
     public function up(): void
     {
-        Schema::create('pacientes', function (Blueprint $table) {
-            $table->id();
-            $table->text('nombre');
-            $table->text('apellido');
-            $table->date('fecha_nacimiento');
-            $table->text('telefono');
-            $table->text('email');
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('pacientes')) {
+            Schema::create('pacientes', function (Blueprint $table) {
+                $table->id();
+                $table->text('nombre');
+                $table->text('apellido');
+                $table->date('fecha_nacimiento');
+                $table->text('telefono');
+                $table->text('email');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
      * Reverse the migrations.
+     * 
+     * @return void
      */
     public function down(): void
     {
