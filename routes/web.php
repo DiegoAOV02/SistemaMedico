@@ -8,6 +8,8 @@ use App\Http\Controllers\CrearCitasSecretarioController;
 use App\Http\Controllers\Enfermero\EnfermeroController;
 use App\Http\Controllers\Medico\MedicoController;
 use App\Http\Controllers\Paciente\PacienteController;
+use App\Http\Controllers\PagosController;
+use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistroEnfermeroController;
 use App\Http\Controllers\RegistroMedicosADMINController;
@@ -85,6 +87,7 @@ Route::middleware(['auth', 'AdministradorMiddleware'])->group(function(){
     Route::get('/admin/registro-enfermeros', [RegistroEnfermeroController::class, 'index'])->name('admin.registro-enfermeros'); //* Vista para el registro de enfermeros
     Route::post('/admin/registro-enfermeros', [RegistroEnfermeroController::class, 'registro_enfermeros'])->name('admin.registro-enfermeros.store'); //* POST a registrar enfermeros a BD
     Route::get('/admin/registro-productos', [RegistroProductoADMINController::class, 'index'])->name('admin.registro-productos'); //* Vista para registrar productos
+    Route::post('/admin/registro-productos', [RegistroProductoADMINController::class, 'store'])->name('admin.registro-productos.store');
 });
 
 
@@ -96,5 +99,7 @@ Route::middleware(['auth', 'SecretarioMiddleware'])->group(function(){
     Route::get('/secretario/consultas', [CrearCitasSecretarioController::class, 'index'])->name('secretario.consultas'); //* Vista para consultar pacientes
     Route::get('/secretario/crear-cita', [CrearCitasSecretarioController::class, 'index'])->name('secretario.crear-cita'); //* Vista para crear citas
     Route::post('/secretario/crear-cita', [CrearCitasSecretarioController::class, 'store'])->name('secretario.crear-cita.store'); //* POST a crear citas
+    Route::get('/secretario/producto', [ProductosController::class, 'index'])->name('secretario.medicamentos'); //* Vista para productos
+    Route::get('/secretario/pagos', [PagosController::class, 'index'])->name('secretario.pagos'); //* Vista para pagos
 });
     
