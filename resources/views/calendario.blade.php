@@ -125,7 +125,18 @@
                                     class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
                                     name="pacientes" x-model="event_title" required>
                                     @foreach($pacientes as $paciente)
-                                        <option value="{{ $paciente->nombre }}">{{ $paciente->nombre }}</option>
+                                        <option value="{{ $paciente->nombre }}">{{ $paciente->nombre }} {{ $paciente->apellido}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <!-- Agregar médico a la cita -->
+                            <div class="mb-4">
+                                <label class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Médico</label>
+                                <select
+                                    class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
+                                    name="medicos" x-model="event_title" required>
+                                    @foreach($medicos as $medico)
+                                        <option value="{{ $medico->nombre }}">{{ $medico->nombre }} {{ $medico->apellido }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -186,8 +197,9 @@
         <script>
             function app() {
                 return {
-                    month: '',
-                    year: '',
+                    month: new Date().getMonth(),
+                    year: new Date().getFullYear(),
+                    MONTH_NAMES: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
                     no_of_days: [],
                     blankdays: [],
                     days: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
