@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cita;
 use App\Models\Paciente;
+use App\Models\Servicios;
 use Illuminate\Http\Request;
 
 class CrearCitasSecretarioController extends Controller
@@ -12,8 +13,8 @@ class CrearCitasSecretarioController extends Controller
     {
         $servicio = $request->input('servicio');
         $pacientes = Paciente::all(); // Obtener todos los pacientes
-        $citas = Cita::all();
-        return view('secretario.crear-cita', compact('servicio', 'pacientes', 'citas'));
+        $servicios = Servicios::all(); // Obtener todos los servicios
+        return view('secretario.crear-cita', compact('servicio', 'pacientes', 'servicios'));
     }
 
     public function store(Request $request)

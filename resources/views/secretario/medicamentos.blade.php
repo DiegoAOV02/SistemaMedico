@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio </title>
+    <title>Productos</title>
     <!-- Incluye Tailwind CSS desde CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -12,75 +12,46 @@
 
 <body>
     <x-app-layout>
+        <x-slot name="header">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('Productos') }}
+            </h2>
+        </x-slot>
+
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="mt-6 p-6 rounded-lg shadow">
+                    <!-- Buscador -->
                     <div class="flex justify-between items-center mb-4">
-                        <input type="text" id="search" placeholder="Buscar servicio..."
-                            class="w-full p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                        <input type="text" id="search" placeholder="Buscar producto..."
+                        class="w-full p-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-600">
+                        <a href="#"
+                            class="ml-2 inline-flex items-center px-4 py-2 bg-green-500 text-white rounded-md font-semibold text-xs uppercase tracking-widest hover:bg-green-700 focus:bg-green-700 active:bg-green-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                            Vender
+                        </a>
                     </div>
-                </div>
-                <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <a href="{{ route('secretario.medicamentos', ['servicio' => 'Farmarcia']) }}"
-                        class="block bg-white  p-6 rounded-lg shadow">
-                        <img src="{{ asset('imagenes/famarcia.jpeg') }}" alt="Farmacia"
-                            class="w-full h-40 object-cover rounded-t-lg">
-                        <h3 class="mt-4 text-lg font-semibold text-gray-900 ">Famarcia</h3>
-                    </a>
-                    <a href="{{ route('secretario.crear-cita', ['servicio' => 'Rayos X']) }}"
-                        class="block bg-white  p-6 rounded-lg shadow">
-                        <img src="{{ asset('imagenes/rayosX.jpg') }}" alt="Rayos X"
-                            class="w-full h-40 object-cover rounded-t-lg">
-                        <h3 class="mt-4 text-lg font-semibold text-gray-900 ">Rayos X</h3>
-                    </a>
-                    <a href="{{ route('secretario.crear-cita', ['servicio' => 'Consulta General']) }}"
-                        class="block bg-white  p-6 rounded-lg shadow">
-                        <img src="{{ asset('imagenes/consulta.jpg') }}" alt="Consulta General"
-                            class="w-full h-40 object-cover rounded-t-lg">
-                        <h3 class="mt-4 text-lg font-semibold text-gray-900 ">Consulta General</h3>
-                    </a>
-                    <a href="{{ route('secretario.crear-cita', ['servicio' => 'Consulta Psicologica']) }}"
-                        class="block bg-white  p-6 rounded-lg shadow">
-                        <img src="{{ asset('imagenes/psicologa.jpg') }}" alt="Consulta Psicologica"
-                            class="w-full h-40 object-cover rounded-t-lg">
-                        <h3 class="mt-4 text-lg font-semibold text-gray-900 ">Consulta Psicologica</h3>
-                    </a>
-                    <a href="{{ route('secretario.crear-cita', ['servicio' => 'Ginecologia']) }}"
-                        class="block bg-white  p-6 rounded-lg shadow">
-                        <img src="{{ asset('imagenes/ginecologo.jpg') }}" alt="Ginecologo"
-                            class="w-full h-40 object-cover rounded-t-lg">
-                        <h3 class="mt-4 text-lg font-semibold text-gray-900 ">Ginecologia</h3>
-                    </a>
-                    <a href="{{ route('secretario.crear-cita', ['servicio' => 'Estudios Toxicologicos']) }}"
-                        class="block bg-white  p-6 rounded-lg shadow">
-                        <img src="{{ asset('imagenes/toxicologia.jpg') }}" alt="Toxicologia"
-                            class="w-full h-40 object-cover rounded-t-lg">
-                        <h3 class="mt-4 text-lg font-semibold text-gray-900 ">Estudios Toxicologicos</h3>
-                    </a>
-                    <a href="{{ route('secretario.crear-cita', ['servicio' => 'Laboratorio Clinico']) }}"
-                        class="block bg-white  p-6 rounded-lg shadow">
-                        <img src="{{ asset('imagenes/laboratorio.jpg') }}" alt="laboratorio"
-                            class="w-full h-40 object-cover rounded-t-lg">
-                        <h3 class="mt-4 text-lg font-semibold text-gray-900 ">Laboratorio Clinico</h3>
-                    </a>
-                    <a href="{{ route('secretario.crear-cita', ['servicio' => 'Cardiologia']) }}"
-                        class="block bg-white  p-6 rounded-lg shadow">
-                        <img src="{{ asset('imagenes/cardiologo.jpg') }}" alt="cardiologo"
-                            class="w-full h-40 object-cover rounded-t-lg">
-                        <h3 class="mt-4 text-lg font-semibold text-gray-900 ">Cardiologia</h3>
-                    </a>
-                    <a href="{{ route('secretario.crear-cita', ['servicio' => 'Pediatria']) }}"
-                        class="block bg-white  p-6 rounded-lg shadow">
-                        <img src="{{ asset('imagenes/pediatra.jpg') }}" alt="pediatra"
-                            class="w-full h-40 object-cover rounded-t-lg">
-                        <h3 class="mt-4 text-lg font-semibold text-gray-900 ">Pediatria</h3>
-                    </a>
-                    <a href="{{ route('secretario.crear-cita', ['servicio' => 'Nutriologia']) }}"
-                        class="block bg-white  p-6 rounded-lg shadow">
-                        <img src="{{ asset('imagenes/Nutriologo.jpg') }}" alt="nutriologo"
-                            class="w-full h-40 object-cover rounded-t-lg">
-                        <h3 class="mt-4 text-lg font-semibold text-gray-900 ">Nutriologo</h3>
-                    </a>
+                    <!-- Tabla -->
+                    <div class="overflow-x-auto flex justify-center">
+                        <table class="min-w-full bg-white rounded-lg shadow-md">
+                            <thead>
+                                <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                                    <th class="py-3 px-6 text-left">Producto</th>
+                                    <th class="py-3 px-6 text-left">Cantidad</th>
+                                    <th class="py-3 px-6 text-left">Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-600 text-sm">
+                                @foreach ($productos as $producto)
+                                    <tr class="border-b border-gray-200 producto">
+                                        <td class="py-3 px-6 text-left">{{ $producto->nombre }}</td>
+                                        <td class="py-3 px-6 text-left">{{ $producto->cantidad }}</td>
+                                        <td class="py-3 px-6 text-left">{{ $producto->precio }}</td>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -89,14 +60,14 @@
     <script>
         document.getElementById('search').addEventListener('input', function () {
             let filter = this.value.toLowerCase();
-            let services = document.querySelectorAll('.service');
+            let products = document.querySelectorAll('.producto');
 
-            services.forEach(function (service) {
-                let text = service.textContent.toLowerCase();
+            products.forEach(function (product) {
+                let text = product.textContent.toLowerCase();
                 if (text.includes(filter)) {
-                    service.style.display = "";
+                    product.style.display = "";
                 } else {
-                    service.style.display = "none";
+                    product.style.display = "none";
                 }
             });
         });

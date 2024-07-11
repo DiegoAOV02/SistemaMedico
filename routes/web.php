@@ -17,6 +17,7 @@ use App\Http\Controllers\RegistroPacientesADMINController;
 use App\Http\Controllers\RegistroPacientesMEDICOController;
 use App\Http\Controllers\RegistroPacientesSECRETARIOController;
 use App\Http\Controllers\RegistroProductoADMINController;
+use App\Http\Controllers\RegistroProductoSECRETARIOController;
 use App\Http\Controllers\RegistroSecretarioADMINController;
 use App\Http\Controllers\RegistroServiciosController;
 use App\Http\Controllers\Secretario\SecretarioController;
@@ -102,5 +103,7 @@ Route::middleware(['auth', 'SecretarioMiddleware'])->group(function(){
     Route::get('/secretario/citas', [CrearCitasSecretarioController::class, 'getCitas'])->name('secretario.citas');
     Route::get('/secretario/producto', [ProductosController::class, 'index'])->name('secretario.medicamentos'); //* Vista para productos
     Route::get('/secretario/pagos', [PagosController::class, 'index'])->name('secretario.pagos'); //* Vista para pagos
+    Route::get('/secretario/registro-productos', [RegistroProductoSECRETARIOController::class, 'index'])->name('secretario.registro-productos');
+    Route::post('/secretario/registro-productos', [RegistroProductoSECRETARIOController::class, 'store'])->name('secretario.registro-productos.store');
 });
     
