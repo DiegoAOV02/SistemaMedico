@@ -8,30 +8,22 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     * 
-     * @return void
      */
     public function up(): void
     {
-        if(!Schema::hasTable('servicios')) {
-            Schema::create('servicios', function (Blueprint $table) {
-                $table->id();
-                $table->string('nombre');
-                $table->text('descripcion');
-                $table->decimal('precio', 8, 2);
-                $table->unsignedBigInteger('medico_id')->nullable();
-                $table->timestamps();
-    
-                // Crear llave foranea que extraiga de la tabla de users aquellos que tengan el rol de médico
-                $table->foreign('medico_id')->references('id')->on('users')->onDelete('cascade');
-            });
-        }
+        Schema::create('servicios', function (Blueprint $table) {
+            $table->id();
+            $table->string('content')->nullable(); // Campo para almacenar la URL o nombre del archivo de la foto
+            $table->string('nombre');
+            $table->text('descripcion');
+            $table->decimal('precio', 8, 2);
+            $table->string('medico_nombre')->nullable(); // Nuevo campo para almacenar el nombre del médico
+            $table->timestamps();
+        });
     }
 
     /**
      * Reverse the migrations.
-     * 
-     * @return void
      */
     public function down(): void
     {

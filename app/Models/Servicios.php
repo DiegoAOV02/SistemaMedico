@@ -10,14 +10,15 @@ class Servicios extends Model
     use HasFactory;
 
     protected $fillable = [
+        'content',
         'nombre',
         'descripcion',
         'precio',
-        'medico_id',
+        'medico_nombre',
     ];
 
     public function medico()
     {
-        return $this->belongsTo(User::class, 'medico_id');
+        return $this->belongsTo(User::class, 'medico_nombre');
     }
 }

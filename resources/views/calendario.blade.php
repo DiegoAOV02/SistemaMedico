@@ -125,7 +125,7 @@
                                     class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
                                     name="pacientes" x-model="event_title" required>
                                     @foreach($pacientes as $paciente)
-                                        <option value="{{ $paciente->nombre }}">{{ $paciente->nombre }}</option>
+                                        <option value="{{ $paciente->nombre }}">{{ $paciente->nombre }} {{ $paciente->apellido }}</option>
                                     @endforeach
                                 </select>
                             </div>
