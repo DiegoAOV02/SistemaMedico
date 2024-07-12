@@ -17,7 +17,8 @@ class CrearCitasSecretarioController extends Controller
         $pacientes = Paciente::all(); // Obtener todos los pacientes
         $servicios = Servicios::all(); // Obtener todos los servicio
         $medicos = User::where('role', User::ROL_MEDICO)->get(); // Obtener todos los médicos
-        return view('secretario.crear-cita', compact('servicio', 'pacientes', 'servicios', 'medicos'));
+        $citas = Cita::all(); // Obtener todas las citas
+        return view('secretario.crear-cita', compact('servicio', 'pacientes', 'servicios', 'medicos', 'citas'));
     }
 
     public function store(Request $request)
