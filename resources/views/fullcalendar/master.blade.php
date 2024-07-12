@@ -80,7 +80,7 @@
                 <!-- Botones de acción -->
                 <div class="mt-8 text-right">
                     <button type="button" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">Guardar cita</button>
+                    <button type="submit" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg">Guardar cita</button>
                 </div>
             </form>
         </div>
