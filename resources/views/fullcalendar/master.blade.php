@@ -44,16 +44,18 @@
         <div class="modal-body">
             <form method="POST" action="{{ route('secretario.crear-cita') }}">
                 @csrf
+                <!-- Nombre del paciente -->
                 <div class="mb-4">
                     <label class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Paciente</label>
                     <select
                         class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
-                        name="paciente_id" required>
+                        name="pacientes" required>
                         @foreach($pacientes as $paciente)
                             <option value="{{ $paciente->id }}">{{ $paciente->nombre }} {{ $paciente->apellido }}</option>
                         @endforeach
                     </select>
                 </div>
+                <!-- Hora y fecha de la cita -->
                 <div class="mb-4">
                     <label for="time" class="block mb-2 text-sm font-medium text-gray-900">Seleccionar hora:</label>
                     <div class="flex">
@@ -61,6 +63,7 @@
                         <input type="date" id="date" class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 leading-none focus:ring-blue-500 focus:border-blue-500 block flex-1 w-full text-sm border-gray-300 p-2.5" name="fecha" required>
                     </div>
                 </div>
+                <!-- Tipo del servicio -->
                 <div class="mb-4">
                     <label class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Servicio</label>
                     <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" name="servicio" required>
@@ -69,10 +72,12 @@
                         @endforeach
                     </select>
                 </div>
+                <!-- Descripción de la cita -->
                 <div class="mb-4">
                     <label class="text-gray-800 block mb-1 font-bold text-sm tracking-wide">Descripción</label>
                     <textarea class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" name="Descripcion" required></textarea>
                 </div>
+                <!-- Botones de acción -->
                 <div class="mt-8 text-right">
                     <button type="button" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg" data-dismiss="modal">Cancelar</button>
                     <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">Guardar cita</button>
