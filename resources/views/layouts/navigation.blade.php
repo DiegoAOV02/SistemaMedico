@@ -127,21 +127,74 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden ">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="dark:text-black">
-                {{ __('Dashboard') }}
+            <x-responsive-nav-link :href="Auth::user()->role === 'Administrador' ? route('admin.dashboard') : (Auth::user()->role === 'Secretario' ? route('secretario.dashboard') : route('dashboard'))" :active="request()->routeIs('dashboard')" class="text-black">
+                {{ __('Inicio') }}
             </x-responsive-nav-link>
+
+            <!-- admin links responsive -->
+            @if (Auth::user()->role === 'Administrador')
+                <x-responsive-nav-link href="{{ route('admin.registro-pacientes') }}" :active="request()->routeIs('admin.registro-pacientes')" class="text-black">
+                    {{ __('Pacientes') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('admin.registro-medicos') }}" :active="request()->routeIs('admin.registro-medicos')" class="text-black">
+                    {{ __('Médicos') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('admin.registro-secretarios') }}" :active="request()->routeIs('admin.registro-secretarios')" class="text-black">
+                    {{ __('Secretarios') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('admin.registro-servicios') }}" :active="request()->routeIs('admin.registro-servicios')" class="text-black">
+                    {{ __('Servicios')}}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('admin.registro-productos') }}" :active="request()->routeIs('admin.registro-productos')" class="text-black">
+                    {{ __('Productos') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('admin.registro-enfermeros') }}" :active="request()->routeIs('admin.registro-enfermeros')" class="text-black">
+                    {{ __('Enfermeros') }}
+                </x-responsive-nav-link>
+            @endif
+
+            <!-- medico links responsive -->
+            @if (Auth::user()->role === 'Médico')
+                <x-responsive-nav-link href="/registro-pacientes" :active="request()->routeIs('medico.registro-pacientes')" class="text-black">
+                    {{ __('Registrar Pacientes')}}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="/crear-cita" :active="request()->routeIs('medico.crear-cita')" class="text-black">
+                    {{ __('Crear Cita')}}
+                </x-responsive-nav-link>
+            @endif
+
+            <!-- secretario links responsive -->
+            @if (Auth::user()->role === 'Secretario')
+                <x-responsive-nav-link href="{{ route('secretario.registro-pacientes') }}" :active="request()->routeIs('secretario.registro-pacientes')" class="text-black">
+                    {{ __('Registro Pacientes')}}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('secretario.consultas') }}" :active="request()->routeIs('secretario.consultas')" class="text-black">
+                    {{ __('Citas Agendadas')}}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link href="{{ route('secretario.registro-productos') }}" :active="request()->routeIs('secretario.pagos')" class="text-black">
+                    {{ __('Registrar Productos')}}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 background-color: #3FBBB4">
             <div class="px-4">
-                <div class="font-medium text-base text-black">{{ Auth::user()->name }}</div>
+                <div class="font-medium text-base text-black">{{ Auth::user()->nombre }} {{ Auth::user()->apellido}}</div>
                 <div class="font-medium text-sm text-black">{{ Auth::user()->email }}</div>
             </div>
 
             <div class="mt-3 space-y-1 background-color: #3FBBB4">
                 <x-responsive-nav-link :href="route('profile.edit')" class="text-black background-color: #3FBBB4">
-                    {{ __('Profile') }}
+                    {{ __('Perfil') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -150,7 +203,7 @@
                     <x-responsive-nav-link :href="route('logout')" class="text-black background-color: #3FBBB4"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('Cerrar sesión') }}
                     </x-responsive-nav-link>
                 </form>
             </div>
