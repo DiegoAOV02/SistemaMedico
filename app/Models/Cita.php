@@ -14,6 +14,12 @@ class Cita extends Model
         'hora',
         'fecha',
         'servicio',
+        'medico_id',
         'Descripcion',
     ];
+
+    public function medico()
+    {
+        return $this->belongsTo(User::class, 'medico_id');
+    }
 }

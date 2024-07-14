@@ -21,7 +21,7 @@ class RegistroServiciosController extends Controller
             'nombre' => 'required|string|max:255',
             'descripcion' => 'nullable|string',
             'precio' => 'required|numeric',
-            'medico_nombre' => 'nullable|string' // Valida el nombre del medico.
+            'medico_id' => 'nullable|string' // Valida el nombre del medico.
         ]);
 
         // Manejo de imagen
@@ -39,7 +39,7 @@ class RegistroServiciosController extends Controller
             'nombre' => $validated['nombre'],
             'descripcion' => $validated['descripcion'],
             'precio' => $validated['precio'],
-            'medico_nombre' => $validated['medico_nombre'], // Guardar el nombre del médico
+            'medico_id' => $validated['medico_id'], // Guardar el nombre del médico
         ]);
 
         return redirect()->back()->with('success', 'Servicio registrado con éxito.');
