@@ -50,10 +50,11 @@
                         <x-nav-link href="/registro-pacientes" :active="request()->routeIs('medico.registro-pacientes')" class="text-black">
                             {{ __('Registro Pacientes') }}
                         </x-nav-link>
-
+                        <!--
                         <x-nav-link href="/crear-cita" :active="request()->routeIs('medico.crear-cita')" class="text-black">
                             {{ __('Crear Cita') }}
                         </x-nav-link>
+                        -->
                     @endif
 
                     <!-- secretario links -->
