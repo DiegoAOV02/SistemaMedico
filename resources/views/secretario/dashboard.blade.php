@@ -24,9 +24,9 @@
                 <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <a href="{{ route('secretario.medicamentos', ['servicio' => 'Farmarcia']) }}"
                         class="block bg-white p-6 rounded-lg shadow">
-                        <img src="{{ asset('imagenes/famarcia.jpeg') }}" alt="Farmacia"
+                        <img src="{{ asset('images/famarcia.jpeg') }}" alt="Farmacia"
                             class="w-full h-40 object-cover rounded-t-lg">
-                        <h3 class="mt-4 text-lg font-semibold text-gray-900">Farmarcia</h3>
+                        <h3 class="mt-4 text-lg font-semibold text-gray-900">Farmacia</h3>
                     </a>
 
                     @foreach ($servicios as $servicio)
