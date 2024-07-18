@@ -45,6 +45,7 @@ Route::middleware(['auth', 'MedicoMiddleware'])->group(function(){
     Route::get('registro-pacientes', [RegistroPacientesMEDICOController::class, 'index'])->name('registro-pacientes'); //* Vista para registrar pacientes
     Route::post('registro-pacientes', [RegistroPacientesMEDICOController::class, 'registro_paciente'])->name('registro-pacientes.store'); //* POST a registrar pacientes a BD
     Route::get('consultas', [ConsultasMEDICOController::class, 'index'])->name('consultas');
+    Route::post('consultas', [ConsultasMEDICOController::class, 'storeConsulta'])->name('consultas.store');
     Route::get('crear-cita', [CrearCitasMEDICOController::class, 'index'])->name('crear-cita');
 });
 
@@ -107,3 +108,7 @@ Route::middleware(['auth', 'SecretarioMiddleware'])->group(function(){
     Route::post('/secretario/registro-productos', [RegistroProductoSECRETARIOController::class, 'store'])->name('secretario.registro-productos.store');
 });
     
+
+use App\Http\Controllers\ImageController;
+
+Route::get('/imagen/{id}', [ImageController::class, 'show'])->name('imagen.show');
