@@ -53,7 +53,7 @@
                         class="bg-gray-200 appearance-none border-2 border-gray-200 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500"
                         name="pacientes" required>
                         @foreach($pacientes as $paciente)
-                            <option value="{{ $paciente->nombre }}">{{ $paciente->nombre }} {{ $paciente->apellido }}</option>
+                            <option value="{{ $paciente->nombre }} {{ $paciente->apellido}}">{{ $paciente->nombre }} {{ $paciente->apellido }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -61,7 +61,9 @@
                 <div class="mb-4">
                     <label for="time" class="block mb-2 text-sm font-medium text-gray-900">Seleccionar hora:</label>
                     <div class="flex">
-                        <input type="time" id="time" class="rounded-none rounded-s-lg bg-gray-50 border text-gray-900 leading-none focus:ring-blue-500 focus:border-blue-500 block flex-1 w-full text-sm border-gray-300 p-2.5" min="09:00" max="18:00" value="09:00" name="hora" required>
+                        <select id="time" class="rounded-none rounded-s-lg bg-gray-50 border text-gray-900 leading-none focus:ring-blue-500 focus:border-blue-500 block flex-1 w-full text-sm border-gray-300 p-2.5" name="hora" required>
+                            <!-- Opciones de tiempo se llenan dinámicamente -->
+                        </select>
                         <input type="date" id="date" class="rounded-none rounded-e-lg bg-gray-50 border text-gray-900 leading-none focus:ring-blue-500 focus:border-blue-500 block flex-1 w-full text-sm border-gray-300 p-2.5" name="fecha" required>
                     </div>
                 </div>
@@ -126,6 +128,7 @@
         if (selectedDate.setHours(0,0,0,0) >= now.setHours(0,0,0,0)) {
           $('#date').val(info.startStr);
           $('#eventModal').modal('show');
+          updateAvailableTimes(info.startStr);
         } else {
           alert('No puedes seleccionar una fecha pasada.');
         }
@@ -146,6 +149,29 @@
       moreLinkClick: 'popover'
     });
     calendar.render();
+
+    // Actualiza las opciones de hora disponibles según las citas ya reservadas
+    function updateAvailableTimes(selectedDate) {
+      var takenTimes = citas.filter(function(cita) {
+        return cita.fecha === selectedDate.split("T")[0];
+      }).map(function(cita) {
+        return cita.hora;
+      });
+
+      var timeSelect = $('#time');
+      var allTimes = [
+        '07:00', '07:30', '08:00', '08:30', '09:00', '09:30', '10:00', '10:30',
+        '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30',
+        '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00'
+      ];
+
+      timeSelect.empty();
+      allTimes.forEach(function(time) {
+        if (!takenTimes.includes(time)) {
+          timeSelect.append(new Option(time, time));
+        }
+      });
+    }
   });
 </script>
 </body>

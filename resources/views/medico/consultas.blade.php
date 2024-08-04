@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -24,6 +27,7 @@
                         @csrf
                         <div class="grid grid-cols-1 gap-6">
                             <div class="relative">
+                                <!-- Nombre del paciente -->
                                 <label for="paciente" class="block font-medium text-sm ">Nombre del paciente</label>
                                 <input id="paciente"
                                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-white text-gray-900"
@@ -110,7 +114,7 @@
                                                 <option value="{{ $servicio->id }}">{{ $servicio->nombre }}</option>
                                             @endforeach
                                         </select>
-                                        <textarea id="indicaciones_estudios" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-white text-gray-900" name="indicaciones_estudios[]" placeholder="Escribe indicaciones a considerar">{{ $servicio->descripcion }}</textarea>
+                                        <textarea id="indicaciones_estudios" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-white text-gray-900" name="indicaciones_estudios[]" placeholder="Escribe indicaciones a considerar"></textarea>
                                     </div>
                                 </div>
                                 <button type="button" id="add-estudio" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md">Agregar Estudio</button>
@@ -224,6 +228,14 @@
 
         // Add initial remove functionality
         addRemoveFunctionality();
+
+        $(function() {
+            let availablePatients = @json($pacientes->pluck('nombre'));
+
+            $("#paciente").autocomplete({
+                source: availablePatients
+            })
+        })
     </script>
 </body>
 

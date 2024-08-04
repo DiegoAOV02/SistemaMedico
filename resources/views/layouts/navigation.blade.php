@@ -71,7 +71,7 @@
                             {{ __('Pagos De Consultas') }}
                         </x-nav-link>
                         
-                        <x-nav-link  href="{{ route('secretario.registro-productos') }}" :active="request()->routeIs('secretario.pagos')" class="text-black">
+                        <x-nav-link  href="{{ route('secretario.registro-productos') }}" :active="request()->routeIs('secretario.registro-productos')" class="text-black">
                             {{ __('Registrar Productos') }}
                         </x-nav-link>
 
