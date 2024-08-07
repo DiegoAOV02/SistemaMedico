@@ -302,6 +302,7 @@
                                     <th class="py-3 px-6 text-left">Cantidad</th>
                                     <th class="py-3 px-6 text-left">Fecha Vecimiento</th>
                                     <th class="py-3 px-6 text-left">Precio</th>
+                                    <th class="py-3 px-6 text-left">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody class="text-gray-600 text-sm">
@@ -311,6 +312,24 @@
                                         <td class="py-3 px-6 text-left">{{ $producto->cantidad }}</td>
                                         <td class="py-3 px-6 text-left">{{ $producto->fecha_vencimiento }}</td>
                                         <td class="py-3 px-6 text-left">{{ $producto->precio }}</td>
+                                        <td class="py-3 px-6 text-left">
+                                            <div class="flex space-x-2">
+                                                <a href="{{ route('registro-productos.edit', $producto->id) }}"
+                                                class="ms-4 inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                                                {{ __('Modificar')}}
+                                                </a>
+                                                <form action="{{ route('registro-productos.destroy', $producto->id) }}"
+                                                    method="POST"
+                                                    onsubmit="return confirm('¿Está seguro de que desea eliminar este producto?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="ms-4 inline-flex items-center px-4 py-2 bg-red-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 focus:bg-red-700 active:bg-red-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                                                        {{ __('Eliminar') }}
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

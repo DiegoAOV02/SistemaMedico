@@ -96,8 +96,14 @@ Route::middleware(['auth', 'AdministradorMiddleware'])->group(function(){
     Route::post('/admin/registro-servicios', [RegistroServiciosController::class, 'store'])->name('admin.registro-servicios.store'); //* POST a registrar servicios a BD
     Route::get('/admin/registro-enfermeros', [RegistroEnfermeroController::class, 'index'])->name('admin.registro-enfermeros'); //* Vista para el registro de enfermeros
     Route::post('/admin/registro-enfermeros', [RegistroEnfermeroController::class, 'registro_enfermeros'])->name('admin.registro-enfermeros.store'); //* POST a registrar enfermeros a BD
+    /**
+     * Rutas para productos
+     */
     Route::get('/admin/registro-productos', [RegistroProductoADMINController::class, 'index'])->name('admin.registro-productos'); //* Vista para registrar productos
     Route::post('/admin/registro-productos', [RegistroProductoADMINController::class, 'store'])->name('admin.registro-productos.store');
+    Route::get('/admin/registro-productos/{productos}/edit', [RegistroProductoADMINController::class, 'edit'])->name('registro-productos.edit'); //* Vista para editar pacientes
+    Route::patch('/admin/registro-productos/{productos}', [RegistroProductoADMINController::class, 'update'])->name('registro-productos.update'); //* PATCH a actualizar pacientes
+    Route::delete('/admin/registro-productos/{productos}', [RegistroProductoADMINController::class, 'destroy'])->name('registro-productos.destroy'); //* DELETE a eliminar pacientes
 });
 
 
