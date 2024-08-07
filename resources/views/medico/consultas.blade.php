@@ -154,7 +154,7 @@
                                 <select id="enfermero_select" name="enfermero_id" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-white text-gray-900" style="display: none;">
                                     <option value="">Seleccione un enfermero</option>
                                     @foreach ($enfermeros as $enfermero)
-                                        <option value="{{ $enfermero->id }}">{{ $enfermero->nombre }}</option>
+                                        <option value="{{ $enfermero->id }}">{{ $enfermero->nombre }} {{ $enfermero->apellido}}</option>
                                     @endforeach
                                 </select>
                             </div>
