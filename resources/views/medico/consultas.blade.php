@@ -22,35 +22,34 @@
 
         <div class="py-12 flex justify-center">
             <div class="max-w-7xl w-full sm:px-6 lg:px-8">
-                <div class="bg-white  overflow-hidden shadow-sm sm:rounded-lg p-6">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
                     <form method="POST" action="{{ route('consultas') }}">
                         @csrf
                         <div class="grid grid-cols-1 gap-6">
+                            <!-- Nombre del paciente -->
                             <div class="relative">
-                                <!-- Nombre del paciente -->
-                                <label for="paciente" class="block font-medium text-sm ">Nombre del paciente</label>
+                                <label for="paciente" class="block font-medium text-sm">Nombre del paciente</label>
                                 <input id="paciente"
                                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-white text-gray-900"
                                     name="paciente">
                             </div>
+                            <!-- Motivo de la consulta -->
                             <div>
-                                <label for="motivo_consulta" class="block font-medium text-sm ">Motivo de la consulta</label>
+                                <label for="motivo_consulta" class="block font-medium text-sm">Motivo de la consulta</label>
                                 <textarea id="motivo_consulta"
                                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-white text-gray-900"
                                     name="motivo_consulta"></textarea>
                             </div>
-
+                            <!-- Notas de padecimiento -->
                             <div>
-                                <label for="notas_padecimiento"
-                                    class="block font-medium text-sm ">Notas de padecimiento</label>
+                                <label for="notas_padecimiento" class="block font-medium text-sm">Notas de padecimiento</label>
                                 <textarea id="notas_padecimiento"
                                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-white text-gray-900"
                                     name="notas_padecimiento"></textarea>
                             </div>
-
                             <!-- Signos vitales fields -->
                             <div>
-                                <label for="signos_vitales" class="block font-medium text-sm ">Signos vitales</label>
+                                <label for="signos_vitales" class="block font-medium text-sm">Signos vitales</label>
                                 <div class="flex gap-4">
                                     <div class="relative">
                                         <i class="fa fa-user absolute left-2 top-2.5 text-gray-400"></i>
@@ -86,26 +85,24 @@
                                     </div>
                                 </div>
                             </div>
-
                             <!-- Campo de alergias -->
                             <div>
                                 <label for="alergias"
-                                    class="block font-medium text-sm ">Alergias</label>
+                                    class="block font-medium text-sm">Alergias</label>
                                 <textarea id="alergias"
                                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-white text-gray-900"
                                     name="alergias" placeholder="Escribe las alergias del paciente...">{{ old('alergias') }}</textarea>
                             </div>
-
+                            <!-- Diagnóstico -->
                             <div>
                                 <label for="diagnostico"
-                                    class="block font-medium text-sm ">Diagnóstico</label>
+                                    class="block font-medium text-sm">Diagnóstico</label>
                                 <input id="diagnostico"
                                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-white text-gray-900"
-                                    name="diagnostico" >
+                                    name="diagnostico">
                             </div>
-
-                             <!-- Campo de Solicitar Estudios -->
-                             <div>
+                            <!-- Solicitar Estudios -->
+                            <div>
                                 <label for="solicitar_estudios" class="block font-medium text-sm">Solicitar estudios</label>
                                 <div id="estudios-container" class="flex flex-col gap-4">
                                     <div class="flex gap-4 estudio">
@@ -119,7 +116,6 @@
                                 </div>
                                 <button type="button" id="add-estudio" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md">Agregar Estudio</button>
                             </div>
-
                             <!-- Receta -->
                             <div>
                                 <label for="receta" class="block font-medium text-sm">Receta</label>
@@ -149,6 +145,18 @@
                                 </div>
                                 <button type="button" id="add-medicamento" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md">Agregar Medicamento</button>
                                 <textarea id="notas_receta" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-white text-gray-900" name="notas_receta" placeholder="Agregar notas...">{{ old('notas_receta') }}</textarea>
+                            </div>
+
+                            <!-- Ha participado un enfermero en la consulta -->
+                            <div>
+                                <label for="enfermero_participacion" class="block font-medium text-sm">¿Ha participado un enfermero en la consulta?</label>
+                                <input type="checkbox" id="enfermero_participacion" name="enfermero_participacion" class="mr-2">
+                                <select id="enfermero_select" name="enfermero_id" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-white text-gray-900" style="display: none;">
+                                    <option value="">Seleccione un enfermero</option>
+                                    @foreach ($enfermeros as $enfermero)
+                                        <option value="{{ $enfermero->id }}">{{ $enfermero->nombre }}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
                             <div class="flex justify-end mt-4">
@@ -235,7 +243,17 @@
             $("#paciente").autocomplete({
                 source: availablePatients
             })
-        })
+        });
+
+        // Mostrar/Ocultar select de enfermeros
+        document.getElementById('enfermero_participacion').addEventListener('change', function() {
+            const enfermeroSelect = document.getElementById('enfermero_select');
+            if (this.checked) {
+                enfermeroSelect.style.display = 'block';
+            } else {
+                enfermeroSelect.style.display = 'none';
+            }
+        });
     </script>
 </body>
 

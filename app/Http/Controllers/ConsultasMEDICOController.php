@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Consulta;
+use App\Models\Enfermero;
 use App\Models\Paciente;
 use App\Models\Producto;
 use App\Models\Servicios;
@@ -15,7 +16,8 @@ class ConsultasMEDICOController extends Controller
         $servicios = Servicios::all();
         $productos = Producto::all();
         $pacientes = Paciente::all();
-        return view('medico.consultas', compact('servicios', 'productos', 'pacientes'));
+        $enfermeros = Enfermero::all();
+        return view('medico.consultas', compact('servicios', 'productos', 'pacientes', 'enfermeros'));
     }
 
     public function storeConsulta()
