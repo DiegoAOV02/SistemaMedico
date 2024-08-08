@@ -105,8 +105,11 @@
                             </div>
                             <!-- Solicitar Estudios -->
                             <div>
-                                <label for="solicitar_estudios" class="block font-medium text-sm">Solicitar estudios</label>
-                                <div id="estudios-container" class="flex flex-col gap-4">
+                                <label for="solicitar_estudios" class="block font-medium text-sm">¿Se debe solicitar estudios?</label>
+                                <input type="checkbox" id="solicitar_estudios_checkbox" name="solicitar_estudios" class="mr-2">
+                                
+                                <!-- Contenedor que será mostrado/ocultado -->
+                                <div id="estudios-container" class="flex flex-col gap-4" style="display: none;">
                                     <div class="flex gap-4 estudio">
                                         <select id="solicitar_estudios" name="solicitar_estudios[]" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-white text-gray-900">
                                             @foreach ($servicios as $servicio)
@@ -115,8 +118,9 @@
                                         </select>
                                         <textarea id="indicaciones_estudios" class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 bg-white text-gray-900" name="indicaciones_estudios[]" placeholder="Escribe indicaciones a considerar"></textarea>
                                     </div>
+                                    <button type="button" id="add-estudio" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md">Agregar Estudio</button>
                                 </div>
-                                <button type="button" id="add-estudio" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-md">Agregar Estudio</button>
+                                
                             </div>
                             <!-- Receta -->
                             <div>
@@ -239,14 +243,6 @@
         // Add initial remove functionality
         addRemoveFunctionality();
 
-        $(function() {
-            let availablePatients = @json($pacientes->pluck('nombre'));
-
-            $("#paciente").autocomplete({
-                source: availablePatients
-            })
-        });
-
         // Mostrar/Ocultar select de enfermeros
         document.getElementById('enfermero_participacion').addEventListener('change', function() {
             const enfermeroSelect = document.getElementById('enfermero_select');
@@ -267,6 +263,25 @@
             }
         });
 
+        // Lógica para mostrar/ocultar el contenedor de estudios
+        document.getElementById('solicitar_estudios_checkbox').addEventListener('change', function() {
+            const estudiosContainer = document.getElementById('estudios-container');
+            if (this.checked) {
+                estudiosContainer.style.display = 'block';
+            } else {
+                estudiosContainer.style.display = 'none';
+            }
+        });
+
+        function addRemoveFunctionality() {
+            document.querySelectorAll('.remove-estudio').forEach(button => {
+                button.addEventListener('click', function() {
+                    this.parentElement.remove();
+                });
+            });
+        }
+
+
         document.addEventListener('DOMContentLoaded', function() {
         const numericFields = ['edad', 'talla', 'temperatura', 'peso'];
 
@@ -277,6 +292,8 @@
             });
         });
     });
+
+    addRemoveFunctionality();
     </script>
 </body>
 
