@@ -112,7 +112,13 @@ Route::middleware(['auth', 'AdministradorMiddleware'])->group(function(){
 Route::middleware(['auth', 'SecretarioMiddleware'])->group(function(){
     Route::get('/secretario/dashboard', [SecretarioController::class, 'index'])->name('secretario.dashboard'); //* Vista principal del secretario
     Route::get('/secretario/registro-pacientes', [RegistroPacientesSECRETARIOController::class, 'index'])->name('secretario.registro-pacientes'); //* Vista para registrar pacientes
+    /**
+     * Consultas por parte del secretario
+     */
     Route::get('secretario/consultas', [ConsultasSECRETARIOController::class, 'index'])->name('secretario.consultas');
+    Route::delete('/secretario/consultas/{id}', [ConsultasSecretarioController::class, 'destroy'])->name('consultas.destroy');
+    Route::get('/secretario/citas/{id}/edit', [ConsultasSecretarioController::class, 'edit'])->name('consultas.edit');
+    Route::put('/secretario/citas/{id}', [ConsultasSecretarioController::class, 'update'])->name('consultas.update');
     Route::post('secretario/registro-pacientes', [RegistroPacientesSECRETARIOController::class, 'registro_paciente'])->name('secretario.registro-pacientes.store'); //* POST a registrar pacientes a BD   
     Route::get('/secretario/crear-cita', [CrearCitasSecretarioController::class, 'index'])->name('secretario.crear-cita'); //* Vista para crear citas
     Route::post('/secretario/crear-cita', [CrearCitasSecretarioController::class, 'store'])->name('secretario.crear-cita.store'); //* POST a crear citas
